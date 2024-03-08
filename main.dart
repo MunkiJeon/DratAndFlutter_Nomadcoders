@@ -1,5 +1,7 @@
+import 'dart:svg';
+
 void main(){
-  /* -----------#1 VARIABLES------------- */
+  print('/* -----------#1 VARIABLES Section------------- */');
   // print('hello world~~~');
   
   // var name =  '문키'; // var : 함수나 메소드 안에 지역변수로 많이 사용
@@ -38,7 +40,8 @@ void main(){
   print('hello '+ fin_Var);
   print(fin_Int);
 
-/* ------------#2 DATA TYPES------------ */
+
+  print('/* ------------#2 DATA TYPES Section------------ */');
   String str = "aaa";
   bool alive = true;
   int age = 12;
@@ -102,5 +105,81 @@ void main(){
   unUniqueNumbers.add(1);
   print("SET value: $uniqueNumbers");
   print("List valur: $unUniqueNumbers");
-  //Set과 List의 차이는 가지고 있는 아이템의 Unique(아이탬이 하나만 존재함) 차이이다
+  //Set과 List의 차이는 가지고 있는 아이템의 Unique(아이탬이 하나만 존재함) 차이!!
+
+  print('/* ------------#3 FUNCTIONS Section------------ */');
+  print(syHello_1('munki'));
+  print(plus(55, 44.3));
+  
+  print(syHello_2(// named argument
+    age : 22,
+    country : 'LA',
+    name : 'joji wow',
+  ));
+  print(syHello_2(// named argument
+    name : 'uoouoo',
+    age : 25,
+  ));
+  
+  print(syHello_3('yoyo',77));
+
+  print(capitalizeName('nicoco'));
+  print(capitalizeName(null));
+
+  print(reverseListOfNumbers([1,2,3,4,5]));
+  print(sayHi({"name":"nicoco"}));
+  print(sayHi({"asdfasdfa":"nicoco"}));//map 이기에 key 값을 사용자가 임의로 적어도 허용됨 
 }
+/* ------------#3 FUNCTIONS------------ */
+// void = 출력/연산 없음 (단순 동작 후 끝)
+// void syHello(String name){
+//   print('hello $name nice to meet you!!');
+// }
+// fat arrow syntax
+String syHello_1(String name) =>'hello!! $name nice to meet you!!';
+num plus(num a, num b) => a + b;
+
+// named parameter - Default value 주는 버전
+// String syHello_2({String name ='anon', int age = 99, String country = 'korea'}) 
+// =>'hello $name, age id nice to meet you!!';
+// named parameter - Default value 없는 반드시 입력하게 하는 버전
+String syHello_2({
+  required String name, 
+  required int age, 
+  String country = 'korea'
+  }) 
+=>'hello!! $name, yor age $age years, and your country is $country. Right?';
+
+// optional positional parameter - 순서대로 입력되도록 유도 + 입력 안한 부분은 Default value 주는 방식
+String syHello_3(
+  String name, int age, 
+  [String? country = 'korea']) 
+=>'hello!! $name, yor age $age years, and your country is $country. Right?';
+
+// QQ operlater
+// A ?? B : A가 Null이면 B를 return, A가 Null이 아니면 A를 return
+// A ??= 'B' : A가 null 이면 B값을 할당
+// 예시) String? name; 
+// name ??= '미드';
+
+// String capitalizeName(String? name){ //원본
+//   if(name != null){
+//     return name.toUpperCase();
+//   }
+//   return 'ANON';
+// }
+String capitalizeName(String? name) => name?.toUpperCase() ?? 'ANON';
+
+// Typedef - 자료형이 길어 가명/별명(alias)으로 타입이름을 만들때 사용
+typedef ListOfInts = List<int>;
+ListOfInts reverseListOfNumbers(ListOfInts list){
+  var reversed = list.reversed;
+  return reversed.toList();
+}
+// Map도 Typedef 하긴하나 구조화된 Data의 형태를 지정하기 위해서라면 Class를 사용
+typedef UserInfo = Map<String,String>;
+String sayHi(UserInfo userInfo){
+  return "Hi ${userInfo['name']}";
+}
+
+/* ------------#2 DATA TYPES------------ */
