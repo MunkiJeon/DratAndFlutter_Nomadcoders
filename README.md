@@ -52,3 +52,6 @@
      + 성공하면 다음과 같은 알림이 표시됩니다.
     5. VS Code는 Google Analytics 알림을 표시할 수 있습니다. 동의하면 확인 을 클릭합니다 .
     6. VS Code 다시 시작!
+
+Dart 강의 - https://nomadcoders.co/dart-for-beginners/lobby
+Flutter 강의 - https://nomadcoders.co/flutter-for-beginners/lobby
