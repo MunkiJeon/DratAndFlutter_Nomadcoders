@@ -169,11 +169,57 @@ void main() {
   player1.sayHello();
   player2.sayHello();
 
-  var bluePlayer1 = Player.createBluePlayer( //named Syntax
+  var bluePlayer1 = Player.createBluePlayer(
+    //named Syntax
     name: name,
     age: age,
   );
   var redPlayer1 = Player.createRedPlayer(name, age); //positional Syntax
+
+  // Recap To Class Constructors
+  // var apiData = [
+  //   {
+  //     "name": "MK",
+  //     "team": "red",
+  //     "xp": 0,
+  //   },
+  //   {
+  //     "name": "munki",
+  //     "team": "blue",
+  //     "xp": 100,
+  //   },
+  //   {
+  //     "name": "google",
+  //     "team": "green",
+  //     "xp": 50,
+  //   },
+  // ];
+
+  // apiData.forEach((playerJson) {
+  //   var player = PlayerRecap.fromJson(playerJson);
+  //   player.sayHello();
+  // });
+
+  // Cascade Notation
+  var moomk = PlayerRecap(name: 'Munki', xp: XPLevel.bronze, team: Team.blue);
+  var potato = moomk
+    ..name = 'mks'
+    ..xp = XPLevel.newbie
+    // ..team = 'red'
+    ..team = Team.red
+    ..sayHello();
+
+  var inherPlayer = InherPlayer(
+    team: Team.green,
+    name: 'MongMong',
+  );
+
+  // with된 mixin클래스의 프로퍼티, 메소드를 끌어와 쓸수있다  
+  var car1 = CompactCar(carSize: Size.compact,);
+  car1.soundTheHorn();
+  var car2 = MidsizeCar();
+  print(car2.strengthLeverl);
+  car2.soundTheHorn();
 }
 
 /* ------------#3 FUNCTIONS------------ */
@@ -270,3 +316,89 @@ class Player {
     print('Hi my name is ${this.name}'); //final로 지정된 name 호출
   }
 }
+
+// Abstract Classes(추상화 클래스) - 다른 클래스들이 어떤 청사진을 가지고 있어야 하는지 정의해줌
+abstract class Human {
+  void walk();
+}
+
+// enum 개발자가 오타를 발생시키지 않게 하기위해 선택지를 지정해 줌
+enum Team { red, blue, green }
+
+enum XPLevel { newbie, bronze, silver, gold }
+
+enum Size { compact, medium, large }
+
+class PlayerRecap extends Human {
+  //추상화 클래스인 "Human"을 확장시켜 클래스 내에 "walk" 메소드를 필수로 넣어야 함을 강제함
+  String name; //생성자를 통해 직접 받음
+  XPLevel xp;
+  // String team;
+  Team team;
+
+  // PlayerRecap.fromJson(Map<String, dynamic> playerJson)
+  //     : name = playerJson['name'],
+  //       xp = playerJson['xp'],
+  //       team = playerJson['team'];
+  PlayerRecap({required this.name, required this.xp, required this.team});
+
+  void walk() {
+    print('$name is walking...');
+  }
+
+  void sayHello() {
+    print('Hi my name is ${this.name}'); //final로 지정된 name 호출
+  }
+}
+
+// inheritance(상속)
+class InherHuman {
+  final String name;
+  // InherHuman({required this.name}); // 이것도 가능 - Btype
+  InherHuman(this.name); // 이것도 가능 - Atype
+  void sayHello() {
+    print("Hi my name is $name");
+  }
+}
+
+class InherPlayer extends InherHuman {
+  final Team team;
+
+  // super(name) = InherHuman 의 name
+  InherPlayer({
+    required this.team,
+    required String name,
+    // }) : super(name : name); // 이것도 가능 - Btype
+  }) : super(name); // 이것도 가능 - Atype
+
+  @override
+  void syHello() {
+    super.sayHello();
+    print('and I play team is ${team}');
+  }
+}
+
+// Mixin - 생성자가 없는 클래스를 의미함, 클래스에 프로퍼티와 메소드룰 추가하거나 할때 사용
+mixin Strong {
+  final double strengthLeverl = 1500.99;
+}
+
+mixin Horn {
+  void soundTheHorn() {
+    print("뿌우우우우!!!");
+  }
+}
+
+mixin TireSise{
+  final double tire = 12.99;
+}
+
+class CompactCar with Horn {
+  final Size carSize;
+  CompactCar({
+    required this.carSize,
+  });
+}
+
+class MidsizeCar with Horn, Strong{}
+
