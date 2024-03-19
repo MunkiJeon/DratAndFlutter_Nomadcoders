@@ -31,7 +31,7 @@ class CurrencyCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
-            vertical: 15,
+            vertical: 25,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

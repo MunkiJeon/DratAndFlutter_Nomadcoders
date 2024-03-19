@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
@@ -31,7 +29,7 @@ class App extends StatelessWidget {
               children: [
                 const SizedBox(
                   //여백을 주기 위한
-                  height: 40,
+                  height: 70,
                 ),
                 Row(
                   //옆으로 나열할때
@@ -63,7 +61,7 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 60,
                 ),
                 Text(
                   'Total balance',
@@ -78,13 +76,13 @@ class App extends StatelessWidget {
                 const Text(
                   '\$5 194 482',
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 50,
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 30,
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,7 +100,7 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 70,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -126,7 +124,7 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 const CurrencyCard(
                   name: 'Euro',
