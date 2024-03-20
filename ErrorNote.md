@@ -8,6 +8,7 @@ dart fix --apply ->알아서 원인 적용 해줌...
 3. test 폴더에 widget_test.dart 에서 발생된 애러 
  > The name 'MyApp' isn't a class. Try correcting the name to match an existing class.
  원인 : 'MyApp'이름의 클래스가 없기 때문
- 결과 : 처음 만들때 'MyApp'이란 이름으로 테스트를 했다가 없엤기 때문에 주석처리 함
-4. VSCode에서 flutter 프로젝트명 바꾸는법
-https://dev-un.tistory.com/6
+ 결과 : 처음 만들때 'MyApp'였다가 'App'으로 변경 때문에 라고 추정 - 주석처리 함
+4. The constructor being called isn't a const constructor. Try removing 'const' from the constructor invocation.
+원인 : 'MaterialApp'에 const가 되어 있어 "textTheme: TextTheme()" 줄에서 변경불가해서 뜸
+결과 : textTheme에 const 넣음 -> textTheme: const TextTheme
