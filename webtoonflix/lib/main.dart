@@ -3,7 +3,6 @@ import 'package:webtoonflix/screens/home_screen.dart';
 import 'package:webtoonflix/services/api_service.dart';
 
 void main() {
-  Apiservice().gatTodaysToos();
   runApp(const App());
 }
 
@@ -13,7 +12,7 @@ class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: HomeScreen(),
     );
   }
